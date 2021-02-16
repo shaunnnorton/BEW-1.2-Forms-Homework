@@ -14,18 +14,45 @@
 
 <h2>Edit Item</h2>
 
-<form>
+<form method="POST" action="{{url_for('main.item_detail',item_id=item.id)}}">
+    {{ form.csrf_token }}
     <fieldset>
         <legend>Please enter your information:</legend>
 
 
+        {{form.name.label}}
+        {{form.name}}
+        <ul>
+            {% for error in form.name.errors%}
+            <li>{{error}}</li>
+            {% endfor %}
+        </ul>
 
-        <!-- TODO: Remove the next paragraph and use the `form` object passed in 
-            from the route to render a form. -->
-        <p><em>Form fields go here!</em></p>
+        {{form.price.label}}
+        {{form.price}}
+        <ul>
+            {% for error in form.price.errors%}
+            <li>{{error}}</li>
+            {% endfor %}
+        </ul>
 
-        <input type="submit" value="Submit">
+        {{form.category.label}}
+        {{form.category}}
+
+        {{form.photo_url.label}}
+        {{form.photo_url}}
+        <ul>
+            {% for error in form.photo_url.errors%}
+            <li>{{error}}</li>
+            {% endfor %}
+        </ul>
+
+        {{form.store.label}}
+        {{form.store}}
+
+        {{form.submit}}
     </fieldset>
 </form>
+
 
 {% endblock %}
