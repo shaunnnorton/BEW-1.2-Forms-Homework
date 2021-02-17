@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{current_user.username}}'s Shopping List</h1>
+<ul>
+{% for item in items %}
+    <li>{{item.name}} ${{item.price}}  {{item.store.title}}</li>
+{% endfor %}
+
+</ul>
+
+{% endblock %}
